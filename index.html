@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎂 Happy Birthday 🎂</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(-45deg,#ff6b81,#ff9ff3,#feca57,#ff7675);
+    background-size:400% 400%;
+    animation:gradientBG 12s ease infinite;
+    overflow-x:hidden;
+    color:white;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.page{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hidden{
+    display:none;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    padding:30px;
+    max-width:850px;
+    box-shadow:0 8px 32px rgba(0,0,0,.2);
+}
+
+.btn{
+    margin-top:20px;
+    padding:14px 30px;
+    border:none;
+    border-radius:40px;
+    font-size:18px;
+    cursor:pointer;
+    background:white;
+    color:#ff1493;
+    font-weight:bold;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+}
+
+#typewriter{
+    font-size:3rem;
+    border-right:4px solid white;
+    white-space:nowrap;
+    overflow:hidden;
+}
+
+#subtitle{
+    margin-top:20px;
+    font-size:1.2rem;
+}
+
+.slideshow{
+    width:320px;
+    height:420px;
+    object-fit:cover;
+    border-radius:20px;
+    margin:20px;
+    box-shadow:0 0 25px white;
+}
+
+.gallery{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.gallery img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:20px;
+    transition:.5s;
+}
+
+.gallery img:hover{
+    transform:scale(1.1);
+}
+
+.emoji{
+    position:fixed;
+    top:-20px;
+    font-size:30px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+h1,h2{
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.8;
+    font-size:1.1rem;
+}
+</style>
+</head>
+<body>
+    <audio id="bgMusic" loop>
+    <source src=" metroproposalbgm.mp3" type="audio/mpeg">
+</audio>
+     <script>
+document.addEventListener("click", function () {
+    const music = document.getElementById("metrobposalbgm");
+    music.play();
+}, { once: true });
+</script>
+
+<!-- PAGE 1 -->
+<section id="page1" class="page">
+<div class="card">
+<h1 id="typewriter"></h1>
+<p id="subtitle"></p>
+
+<button class="btn" onclick="showPage('page2')">
+📸 Click Here
+</button>
+</div>
+</section>
+
+<!-- PAGE 2 -->
+<section id="page2" class="page hidden">
+<div class="card">
+
+<h1>❤️ Click on birthday wishes shown below ❤️</h1>
+
+<img id="slide" class="slideshow" src="pooji.pic-1.jpeg">
+
+<br>
+
+<button class="btn" onclick="showPage('page3')">
+💌 Birthday Wishes
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 3 -->
+<section id="page3" class="page hidden">
+<div class="card">
+
+<h1>💖 Special Wishes 💖</h1>
+
+<p>
+🎂 Happy Birthday!<br><br>
+
+🥳 May your day be filled with joy, laughter and happiness.<br><br>
+
+🌹 May every dream you have come true.<br><br>
+
+✨ Wishing you success, health, love and endless smiles.<br><br>
+
+❤️ You deserve all the happiness in the world.
+</p>
+
+<button class="btn" onclick="showPage('page4')">
+🎁 Open Surprise
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 4 -->
+<section id="page4" class="page hidden">
+<div class="card">
+
+<h1>🎁 Birthday Surprise 🎁</h1>
+
+<h2>❤️ You Are Truly Special ❤️</h2>
+
+<p>
+Thank you for being such an amazing person.
+May this year bring unforgettable memories,
+endless happiness and lots of success.
+🎉✨🎂🥳❤️
+</p>
+
+<br>
+
+<div class="gallery">
+<img src="pooji.pic-2.jpeg">
+<img src="pooji.pic-3.jpeg">
+<img src="pooji.pic-4.jpeg">
+<img src="pooji.pic-5.jpeg">
+<img src="pooji.pic-6.jpeg">
+<img src="pooji.pic-7.jpeg">
+</div>
+
+<br>
+
+<h1>HAPPY BIRTHDAY AKKA❤️</h1>
+
+</div>
+</section>
+
+<script>
+
+// Falling Emojis
+for(let i=0;i<40;i++){
+let e=document.createElement("div");
+e.classList.add("emoji");
+e.innerHTML=["🎈","🎉","❤️","✨","🥳","🎂"][Math.floor(Math.random()*6)];
+e.style.left=Math.random()*100+"vw";
+e.style.animationDuration=(Math.random()*6+5)+"s";
+document.body.appendChild(e);
+}
+
+// Typewriter
+const text="Happy Birthday Akka❤️";
+
+let index=0;
+
+function typeWriter(){
+if(index<text.length){
+document.getElementById("typewriter").innerHTML+=text.charAt(index);
+index++;
+setTimeout(typeWriter,100);
+}
+}
+
+typeWriter();
+
+setTimeout(()=>{
+document.getElementById("subtitle").innerHTML=
+"🥳 Wishing you happiness, success, love and beautiful memories on your special day! ❤️🎉";
+},3500);
+
+// Navigation
+function showPage(id){
+document.querySelectorAll(".page").forEach(page=>{
+page.classList.add("hidden");
+});
+
+document.getElementById(id).classList.remove("hidden");
+
+window.scrollTo(0,0);
+}
+
+// Slideshow
+const photos=[
+"pooji.pic-10.jpeg"
+];
+
+let current=0;
+
+setInterval(()=>{
+current=(current+1)%photos.length;
+
+const slide=document.getElementById("slide");
+
+if(slide){
+slide.src=photos[current];
+}
+},2000);
+
+</script>
+
+</body>
+</html>
